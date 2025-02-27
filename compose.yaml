@@ -1,0 +1,24 @@
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - mysql-phpmyadmin-network
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin-container
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - "8080:80"
+    networks:
+      - mysql-phpmyadmin-network
+    restart: unless-stopped
+
+networks:
+  mysql-phpmyadmin-network:
+    driver: bridge
