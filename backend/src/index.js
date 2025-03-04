@@ -1,21 +1,29 @@
 const express = require('express');
 const app = express();
-const database = require('./database');
+const setupDatabase = require('./database');
 const { port } = require('./config');
-const todosRouter = require('./routes/todos');
+const getTodosRouter = require('./routes/todos');
 
 app.use(express.json());
 
-app.get('/', async (req, res) => {
-  const [rows] = await database.raw('SELECT VERSION() AS version');
-  const version = rows[0].version;
-  const message = `Hello from MySQL ${version}`;
-  res.json({ message });
-});
+async function startServer() {
 
-app.use('/todos', todosRouter);
+  const database = await setupDatabase(); // Ensure DB is ready
 
-// Start the server on port 3000
-app.listen(port, () => {
-  console.log(`Non-root server is running on http://localhost:${port}`);
-});
+  app.get('/', async (req, res) => {
+    const [rows] = await database.raw('SELECT VERSION() AS version');
+    const version = rows[0].version;
+    const message = `Hello from MySQL ${version}`;
+    res.json({ message });
+  });
+
+  app.use('/todos', getTodosRouter(database));
+
+  // Start the server on port 3000
+  app.listen(port, () => {
+    console.log(`Non-root server is running on http://localhost:${port}`);
+  });
+
+}
+
+startServer().catch(console.error);
