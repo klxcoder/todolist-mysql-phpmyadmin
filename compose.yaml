@@ -5,7 +5,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     networks:
-      - mysql-phpmyadmin-network
+      - todolist-mysql-phpmyadmin
     restart: unless-stopped
 
   phpmyadmin:
@@ -16,9 +16,9 @@ services:
     ports:
       - "8080:80"
     networks:
-      - mysql-phpmyadmin-network
+      - todolist-mysql-phpmyadmin
     restart: unless-stopped
 
 networks:
-  mysql-phpmyadmin-network:
+  todolist-mysql-phpmyadmin:
     driver: bridge
