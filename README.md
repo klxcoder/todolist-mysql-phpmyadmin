@@ -20,7 +20,7 @@ http://localhost:8080
 
 ```
 username: root
-password: root
+password: root # The content in the file ./secrets/db_root_password.txt
 ```
 
 # Create database `todos`

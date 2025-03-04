@@ -1,10 +1,12 @@
+const fs = require('fs');
+
 const databaseConnectionObject = {
   client: 'mysql2',
   connection: {
     host: 'db',
     port: 3306,
     user: 'root',
-    password: 'root',
+    password: fs.readFileSync('/run/secrets/db_root_password', 'utf8'),
     database: 'tododb',
   },
 }

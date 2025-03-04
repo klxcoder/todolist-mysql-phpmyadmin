@@ -27,6 +27,8 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+    secrets:
+      - db_root_password
     develop:
       watch:
         - action: sync
