@@ -46,6 +46,17 @@ services:
     restart: unless-stopped
     depends_on:
       - backend
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend/vite
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./frontend/vite/package.json
+        - action: rebuild
+          path: ./frontend/Dockerfile
 
 networks:
   todolist-mysql-phpmyadmin:
