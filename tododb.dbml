@@ -1,0 +1,5 @@
+Table todos {
+  id   int      [primary key, increment]
+  text varchar  [not null]
+  done boolean  [not null, default: false]
+}
