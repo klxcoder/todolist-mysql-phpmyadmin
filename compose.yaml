@@ -8,6 +8,12 @@ services:
     secrets:
       - db_root_password
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$(cat /run/secrets/db_root_password)"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
   phpmyadmin: # UI for database server
     image: phpmyadmin
     environment:
@@ -26,7 +32,9 @@ services:
       - todolist-mysql-phpmyadmin
     restart: unless-stopped
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+        restart: true
     secrets:
       - db_root_password
     develop:
