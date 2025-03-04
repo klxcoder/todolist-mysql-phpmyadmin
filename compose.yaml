@@ -2,9 +2,11 @@ services:
   db: # Database server
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
     networks:
       - todolist-mysql-phpmyadmin
+    secrets:
+      - db_root_password
     restart: unless-stopped
   phpmyadmin: # UI for database server
     image: phpmyadmin
@@ -61,3 +63,7 @@ services:
 networks:
   todolist-mysql-phpmyadmin:
     driver: bridge
+
+secrets:
+  db_root_password:
+    file: ./secrets/db_root_password.txt
