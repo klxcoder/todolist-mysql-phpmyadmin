@@ -29,3 +29,15 @@ password: root
 (base) ┌──(klx㉿kali)-[~/todolist-mysql-phpmyadmin/backend] (main)
 └─$ 
 ```
+
+# database: `tododb`
+
+### Create table `todos`
+
+```sql
+CREATE TABLE todos (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  text VARCHAR(255) NOT NULL,
+  done BOOLEAN NOT NULL DEFAULT FALSE
+);
+```
