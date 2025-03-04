@@ -7,4 +7,4 @@ COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 COPY --chown=app:app ./src ./src
 
-CMD ["node", "src/index.js"]
+CMD ["yarn", "dev"]
