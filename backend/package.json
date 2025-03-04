@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "name": "non-root",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
