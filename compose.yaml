@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
     depends_on:
       - db
-  backend:
+  backend: # Backend server
     build:
       context: backend
     networks:
@@ -36,7 +36,7 @@ services:
           path: ./backend/package.json
         - action: rebuild
           path: ./backend/Dockerfile
-  frontend:
+  frontend: # Frontend server
     build:
       context: frontend
     ports:
