@@ -25,6 +25,13 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+    develop:
+      watch:
+        - action: sync
+          path: ./backend/src
+          target: /app/src
+          ignore:
+            - node_modules/
 
 networks:
   todolist-mysql-phpmyadmin:
