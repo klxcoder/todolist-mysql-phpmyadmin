@@ -3,7 +3,7 @@ RUN useradd -ms /bin/sh -u 1001 app
 USER app
 
 WORKDIR /app
-COPY ./vite/package.json ./vite/yarn.lock ./
+COPY ./package.json ./yarn.lock ./
 RUN yarn install --frozen-lockfile
 COPY --chown=app:app ./vite ./
 

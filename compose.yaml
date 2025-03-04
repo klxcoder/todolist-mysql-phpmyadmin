@@ -54,7 +54,7 @@ services:
           ignore:
             - node_modules/
         - action: rebuild
-          path: ./frontend/vite/package.json
+          path: ./frontend/package.json
         - action: rebuild
           path: ./frontend/Dockerfile
 
