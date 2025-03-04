@@ -10,7 +10,7 @@ services:
   phpmyadmin:
     image: phpmyadmin
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: db
     ports:
       - "8080:80"
     networks:
