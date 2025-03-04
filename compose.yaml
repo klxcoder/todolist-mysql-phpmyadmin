@@ -16,6 +16,8 @@ services:
     networks:
       - todolist-mysql-phpmyadmin
     restart: unless-stopped
+    depends_on:
+      - db
 
 networks:
   todolist-mysql-phpmyadmin:
