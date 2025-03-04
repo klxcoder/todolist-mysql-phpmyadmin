@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const databaseConnectionObject = {
+const dbConfig = {
   client: 'mysql2',
   connection: {
     host: 'db',
@@ -14,6 +14,6 @@ const databaseConnectionObject = {
 const port = 3000
 
 module.exports = {
-  databaseConnectionObject,
+  dbConfig,
   port,
 }
