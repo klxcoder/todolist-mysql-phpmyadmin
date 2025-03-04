@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './App.module.scss'
+import Todo from './components/Todos';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className={styles.app}>
       <p>{message || "Loading..."}</p>
+      <Todo />
     </div>
   )
 }

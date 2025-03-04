@@ -1,0 +1,38 @@
+.todoContainer {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 5px;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.todoList {
+  list-style: none;
+  padding: 0;
+}
+
+.todoList li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
