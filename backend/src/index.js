@@ -3,15 +3,14 @@ const app = express();
 const database = require('./database');
 const { port } = require('./config');
 
-async function getTables() {
-  const tables = await database('information_schema.tables')
-    .select('table_name')
-    .where('table_schema', 'your_database_name');
-  console.log(tables.map(t => t.table_name));
+async function getVersion() {
+  const [rows] = await database.raw('SELECT VERSION() AS version');
+  const version = rows[0].version;
+  const message = `Hello from MySQL ${version}`;
+  console.log(message);
 }
 
-getTables();
-
+getVersion();
 
 // Respond with "Hello" at the root path
 app.get('/', (req, res) => {
