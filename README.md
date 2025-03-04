@@ -1,38 +1,31 @@
-```
+# Build
+
+```bash
 docker compose build
 ```
 
-```
-docker compose up
+# Up --watch
+
+```bash
+docker compose up --watch
 ```
 
-```
-docker compose down
-```
+# Open phpMyAdmin
 
 ```
 http://localhost:8080
 ```
+
+# Enter credentials
 
 ```
 username: root
 password: root
 ```
 
-# Note
+# Create database `todos`
 
-```bash
-(base) ┌──(klx㉿kali)-[~/todolist-mysql-phpmyadmin/backend] (main)
-└─$ docker exec -it todolist-mysql-phpmyadmin-backend-1 curl backend:3000
-{"message":"Hello from MySQL 9.2.0"}
-
-(base) ┌──(klx㉿kali)-[~/todolist-mysql-phpmyadmin/backend] (main)
-└─$ 
-```
-
-# database: `tododb`
-
-### Create table `todos`
+# Create table `todos`
 
 ```sql
 CREATE TABLE todos (
@@ -40,4 +33,15 @@ CREATE TABLE todos (
   text VARCHAR(255) NOT NULL,
   done BOOLEAN NOT NULL DEFAULT FALSE
 );
+```
+# Open todo list app
+
+```
+http://localhost:5173
+```
+
+# Clean up
+
+```bash
+docker compose down
 ```
