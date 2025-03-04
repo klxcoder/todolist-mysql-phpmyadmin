@@ -1,4 +1,4 @@
-module.exports = {
+const databaseConnectionObject = {
   client: 'mysql2',
   connection: {
     host: 'db',
@@ -6,4 +6,11 @@ module.exports = {
     user: 'root',
     password: 'root',
   },
+}
+
+const port = 3000
+
+module.exports = {
+  databaseConnectionObject,
+  port,
 }

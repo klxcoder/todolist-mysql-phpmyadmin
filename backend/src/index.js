@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const database = require('./database');
+const { port } = require('./config');
 
 async function getTables() {
   const tables = await database('information_schema.tables')
@@ -18,6 +19,6 @@ app.get('/', (req, res) => {
 });
 
 // Start the server on port 3000
-app.listen(3000, () => {
-  console.log('Non-root server is running on http://localhost:3000');
+app.listen(port, () => {
+  console.log(`Non-root server is running on http://localhost:${port}`);
 });

@@ -1,5 +1,5 @@
-const config = require('./config');
+const { databaseConnectionObject } = require('./config');
 
-const database = require('knex')(config);
+const database = require('knex')(databaseConnectionObject);
 
 module.exports = database;
