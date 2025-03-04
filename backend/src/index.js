@@ -3,18 +3,11 @@ const app = express();
 const database = require('./database');
 const { port } = require('./config');
 
-async function getVersion() {
+app.get('/', async (req, res) => {
   const [rows] = await database.raw('SELECT VERSION() AS version');
   const version = rows[0].version;
   const message = `Hello from MySQL ${version}`;
-  console.log(message);
-}
-
-getVersion();
-
-// Respond with "Hello" at the root path
-app.get('/', (req, res) => {
-  res.send('Hello from non-root container');
+  res.json({ message });
 });
 
 // Start the server on port 3000
